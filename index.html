@@ -5,21 +5,101 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>我爱的人</title>
 </head>
-<body>
+<style>
+    *{
+				margin: 0px;
+				padding: 0px;
+			}
+</style>
+<body bgcolor="#000000">
     <div>
         <audio id="audio" src="微微.mp3" autoplay="autoplay" controls="controls" loop="loop" style="height: 0;"></audio>
     </div>
     <script>
-//         function toggleSound() {
-//             var music = document.getElementById("audio");//获取ID  
-//                 console.log(music);
-//                 console.log(music.paused);
-//             if (music.paused) { //判读是否播放  
-//                 music.paused=false;
-//                 music.play(); //没有就播放 
-//             }
-//         }
-// setInterval("toggleSound()",1);
+        function toggleSound() {
+            var music = document.getElementById("audio");//获取ID  
+                console.log(music);
+                console.log(music.paused);
+            if (music.paused) { //判读是否播放  
+                music.paused=false;
+                music.play(); //没有就播放 
+            }
+        }
+setInterval("toggleSound()",1);
     </script>
+    <script>
+    //随机数
+    function sj(min,max){
+        return parseInt(Math.random()*(max-min+1)+min);
+    }
+    
+    //获取窗口的可视宽、高
+    var ww=document.documentElement.clientWidth;
+    var wh=document.documentElement.clientHeight;
+    
+    
+    //构建对象函数
+    function Star(){
+        var a=sj(50,100);
+        this.width=a;
+        this.height=a;
+        this.left=sj(0,ww-a);
+        this.top=0;
+        
+    }
+    
+    //原型对象
+    /*Star.prototype.show=function(){
+        
+        this.img=document.createElement('img');
+        this.img.src='a.png';
+        this.img.style.width=this.width+'px';
+        this.img.style.height=this.height+'px';
+        this.img.style.position='absolute';
+        this.img.style.left=this.left+'px';
+        this.img.style.top=this.top+'px';
+        
+        document.body.appendChild(this.img);
+    }*/
+    
+    
+    
+    Star.prototype.show=function(){
+        
+        this.img=document.createElement('img');
+        this.img.src='img/a.png';
+        this.img.style.width=this.width+'px';
+        this.img.style.height=this.height+'px';
+        this.img.style.position='absolute';
+        this.img.style.left=this.left+'px';
+        this.img.style.top=this.top+'px';
+        
+        document.body.appendChild(this.img);
+    }
+    
+    //设置下落
+    Star.prototype.drop=function(){
+        var n=sj(20,30);
+        var lt=this.img.offsetTop;
+        var that=this;
+        
+        var timer=setInterval(function(){
+            
+            lt+=n;
+            if (lt>=wh-that.height) {
+                that.img.style.display='none';
+            }
+            that.img.style.top=lt+'px';
+        },200)
+    }
+    
+    
+    //实例化对象
+    setInterval(function(){
+        var obj=new Star();
+        obj.show();
+        obj.drop();
+    },100)
+</script>
 </body>
 </html>
