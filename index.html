@@ -13,19 +13,19 @@
 </style>
 <body bgcolor="#000000">
     <div>
-        <audio id="audio" src="微微.mp3" autoplay="autoplay" controls="controls" loop="loop" style="height: 0;"></audio>
+        <audio id="audio" src="微微.mp3" autoplay="autoplay" controls="controls" loop="loop" ></audio>
     </div>
     <script>
-        function toggleSound() {
-            var music = document.getElementById("audio");//获取ID  
-                console.log(music);
-                console.log(music.paused);
-            if (music.paused) { //判读是否播放  
-                music.paused=false;
-                music.play(); //没有就播放 
-            }
-        }
-setInterval("toggleSound()",1);
+//         function toggleSound() {
+//             var music = document.getElementById("audio");//获取ID  
+//                 console.log(music);
+//                 console.log(music.paused);
+//             if (music.paused) { //判读是否播放  
+//                 music.paused=false;
+//                 music.play(); //没有就播放 
+//             }
+//         }
+// setInterval("toggleSound()",1);
     </script>
     <script>
     //随机数
